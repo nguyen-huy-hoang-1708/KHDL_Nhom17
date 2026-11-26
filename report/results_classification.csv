@@ -1,0 +1,5 @@
+Mô hình,Accuracy,Precision,Recall,F1,ROC-AUC
+Baseline (ngày mai = hôm nay),0.754,0.704,0.704,0.704,
+Logistic Regression,0.776,0.691,0.837,0.757,0.852
+Random Forest,0.778,0.713,0.783,0.746,0.847
+Gradient Boosting,0.774,0.688,0.837,0.756,0.848

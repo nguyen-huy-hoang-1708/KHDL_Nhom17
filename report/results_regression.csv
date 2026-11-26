@@ -1,0 +1,5 @@
+Mô hình,MAE,RMSE,R2
+Baseline (ngày mai = hôm nay),13.06,17.228,0.313
+Ridge Regression,11.365,14.623,0.505
+Random Forest,10.861,14.393,0.52
+Gradient Boosting,10.799,14.4,0.52

@@ -1,0 +1,38 @@
+Số dòng sau khi ghép: 37272
+
+Tỉ lệ thiếu trước xử lý (%):
+pm2_5             0.21
+pm10              0.21
+co                0.21
+no2               0.21
+so2               0.21
+o3                0.21
+temp              0.00
+humidity          0.00
+dew_point         0.00
+precipitation     0.00
+pressure          0.00
+cloud_cover       0.00
+wind_speed        0.00
+wind_dir          0.00
+blh              11.72
+
+Số dòng trùng thời gian bị loại: 0
+
+Số ô còn thiếu sau xử lý: 0
+
+Ngoại lai pm2_5: 289 giá trị > 147.7 đã được kẹp
+
+Ngoại lai pm10: 175 giá trị > 183.3 đã được kẹp
+
+Ngoại lai co: 927 giá trị > 1972.0 đã được kẹp
+
+Ngoại lai no2: 210 giá trị > 107.8 đã được kẹp
+
+Ngoại lai so2: 110 giá trị > 77.1 đã được kẹp
+
+Ngoại lai o3: 41 giá trị > 304.0 đã được kẹp
+
+Bảng ngày cuối cùng: 1545 ngày x 35 cột (2022-08-08 -> 2026-10-30)
+
+Tỉ lệ ngày ô nhiễm (PM2.5 > 50): 33.9%
