@@ -24,6 +24,8 @@ Vị trí: Hoàn Kiếm (21.03°N, 105.85°E). Thời gian: 01/08/2022 – 31/10
 │   ├── preprocess.py     # B2: ghép bảng, xử lý thiếu/ngoại lai, tổng hợp ngày, tạo đặc trưng
 │   ├── eda.py            # B3: thống kê mô tả + 7 biểu đồ
 │   └── train.py          # B4: hồi quy + phân loại, tinh chỉnh, đánh giá, độ quan trọng đặc trưng
+├── app.py                       # Dashboard Streamlit (giao diện)
+│   (src/live.py: lấy dữ liệu mới nhất để dự báo thời gian thực)
 ├── notebooks/PM25_HaNoi.ipynb   # notebook trình bày (đã chạy sẵn)
 ├── data/raw, data/processed     # dữ liệu
 ├── figures/                     # 11 biểu đồ
@@ -39,6 +41,19 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ./run_all.sh            # hoặc chạy từng file trong src/ theo thứ tự
 ```
+
+## Giao diện Dashboard
+```bash
+streamlit run app.py      # mở http://localhost:8501
+```
+| Trang | Chức năng |
+|---|---|
+| 🏠 Tổng quan | Chỉ số chính, biểu đồ PM2.5 tô màu theo mức VN_AQI, chọn khoảng thời gian, quy trình thực hiện |
+| 🔮 Dự báo ngày mai | Lấy dữ liệu **thời gian thực** từ Open-Meteo → dự báo PM2.5 ngày mai, đồng hồ mức độ, xác suất vượt QCVN, khuyến nghị sức khoẻ |
+| 📊 Khám phá dữ liệu | Lọc theo năm/mùa, chọn biến: phân phối, theo tháng/giờ/thứ, heatmap, tương quan, scatter 2 biến tuỳ chọn |
+| 🤖 Mô hình | Bảng so sánh mô hình, dự báo vs thực tế, độ quan trọng đặc trưng, **kéo ngưỡng** để xem đánh đổi Precision–Recall |
+| 🧪 Mô phỏng What-if | Thay đổi gió, mưa, lớp biên, nhiệt độ… và xem PM2.5 dự báo thay đổi; đường độ nhạy theo tốc độ gió |
+| 🗂️ Dữ liệu | Xem và tải bảng dữ liệu, nhật ký tiền xử lý |
 
 ## Kết quả chính (tập test 01/07/2025 – 30/10/2026, 487 ngày)
 | Hồi quy | MAE | RMSE | R² |

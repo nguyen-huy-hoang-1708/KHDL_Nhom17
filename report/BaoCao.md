@@ -91,18 +91,27 @@ Với bài toán cảnh báo, **Recall** quan trọng hơn (bỏ sót ngày ô n
 ### 5.4. Diễn giải mô hình (Hình 10)
 Permutation importance cho thấy các đặc trưng quan trọng nhất: PM2.5 cực đại và trung bình hôm nay, mức thay đổi so với hôm qua, **thành phần gió bắc–nam (wind_v)**, tốc độ gió và mùa (month_sin). Điều này khớp với EDA: PM2.5 có quán tính ngắn hạn và gió là yếu tố khí tượng chi phối.
 
-## 6. Thảo luận và hạn chế
+## 6. Triển khai: Dashboard tương tác
+Nhóm xây dựng ứng dụng web bằng **Streamlit + Plotly** (`app.py`) gồm 6 trang:
+1. **Tổng quan** – các chỉ số chính và diễn biến PM2.5 tô màu theo mức VN_AQI.
+2. **Dự báo ngày mai** – tự động lấy dữ liệu 14 ngày gần nhất từ Open-Meteo, tạo đặc trưng bằng đúng hàm đã dùng khi huấn luyện (`src/live.py`), dự báo PM2.5 ngày mai, xác suất vượt QCVN và khuyến nghị sức khoẻ.
+3. **Khám phá dữ liệu** – EDA tương tác, lọc theo năm/mùa và chọn biến.
+4. **Mô hình** – so sánh mô hình; thanh trượt ngưỡng xác suất minh hoạ đánh đổi Precision–Recall.
+5. **Mô phỏng What-if** – thay đổi các yếu tố khí tượng để kiểm tra mô hình học được quy luật hợp lý (ví dụ: tăng tốc độ gió → PM2.5 dự báo giảm).
+6. **Dữ liệu** – xem và tải dữ liệu đã xử lý.
+
+## 7. Thảo luận và hạn chế
 - Dữ liệu PM2.5 là **dữ liệu mô hình (CAMS)** chứ không phải số đo trạm quan trắc; độ phân giải ~40 km nên không phản ánh khác biệt giữa các quận và có thể làm "phẳng" chu kỳ mùa so với số đo thực tế.
 - Mô hình chỉ dùng thời tiết **hôm nay**; trong thực tế có thể dùng thêm **dự báo thời tiết ngày mai** để cải thiện đáng kể.
 - R² ≈ 0,52: còn nhiều biến động do các yếu tố chưa có trong dữ liệu (đốt rơm rạ, sự kiện, phát thải công nghiệp, vận chuyển ô nhiễm xuyên biên giới).
 
-## 7. Hướng phát triển
+## 8. Hướng phát triển
 - Bổ sung số đo trạm thực tế (OpenAQ, IQAir, Sở TN&MT Hà Nội) và so sánh với CAMS.
 - Thêm biến dự báo thời tiết, dữ liệu cháy (NASA FIRMS), mật độ giao thông.
 - Thử mô hình chuỗi thời gian (SARIMAX, Prophet, LSTM) và dự báo nhiều ngày.
-- Xây dựng dashboard cảnh báo (Streamlit).
+- Triển khai dashboard lên Streamlit Community Cloud và gửi cảnh báo tự động.
 
-## 8. Kết luận
+## 9. Kết luận
 Project đã thực hiện trọn vẹn quy trình Khoa học dữ liệu trên hơn 4 năm dữ liệu thực tế của Hà Nội. Kết quả cho thấy PM2.5 có quy luật rõ theo giờ và mùa, chịu ảnh hưởng mạnh của gió, mưa và độ cao lớp biên. Mô hình học máy dự báo PM2.5 ngày hôm sau với sai số trung bình ~10,8 µg/m³ và phát hiện được 84% số ngày vượt quy chuẩn, tốt hơn rõ rệt so với phương pháp cơ sở.
 
 ## Tài liệu tham khảo
